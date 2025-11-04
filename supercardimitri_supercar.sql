@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le : mar. 07 oct. 2025 à 06:18
--- Version du serveur : 9.1.0
--- Version de PHP : 8.3.14
+-- Host: mysql-supercardimitri.alwaysdata.net
+-- Generation Time: Nov 04, 2025 at 11:56 AM
+-- Server version: 10.11.14-MariaDB
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,27 +18,25 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `supercar`
+-- Database: `supercardimitri_supercar`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `admin`
+-- Table structure for table `admin`
 --
 
-DROP TABLE IF EXISTS `admin`;
-CREATE TABLE IF NOT EXISTS `admin` (
-  `id_admin` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `admin` (
+  `id_admin` int(11) NOT NULL,
   `nom_admin` varchar(50) NOT NULL,
   `prenom_admin` varchar(50) NOT NULL,
   `email_admin` varchar(50) NOT NULL,
-  `password_admin` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_admin`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `password_admin` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id_admin`, `nom_admin`, `prenom_admin`, `email_admin`, `password_admin`) VALUES
@@ -47,23 +45,21 @@ INSERT INTO `admin` (`id_admin`, `nom_admin`, `prenom_admin`, `email_admin`, `pa
 -- --------------------------------------------------------
 
 --
--- Structure de la table `carousel`
+-- Table structure for table `carousel`
 --
 
-DROP TABLE IF EXISTS `carousel`;
-CREATE TABLE IF NOT EXISTS `carousel` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `carousel` (
+  `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `subtitle` varchar(255) NOT NULL,
   `image` blob NOT NULL,
   `background_image` varchar(255) NOT NULL,
-  `status` tinyint(1) DEFAULT '1',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `status` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `carousel`
+-- Dumping data for table `carousel`
 --
 
 INSERT INTO `carousel` (`id`, `title`, `subtitle`, `image`, `background_image`, `status`, `created_at`) VALUES
@@ -74,23 +70,21 @@ INSERT INTO `carousel` (`id`, `title`, `subtitle`, `image`, `background_image`, 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `client`
+-- Table structure for table `client`
 --
 
-DROP TABLE IF EXISTS `client`;
-CREATE TABLE IF NOT EXISTS `client` (
-  `id_client` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `client` (
+  `id_client` int(11) NOT NULL,
   `nom_client` varchar(50) NOT NULL,
   `prenom_client` varchar(50) NOT NULL,
   `email_client` varchar(50) NOT NULL,
   `telephone_client` varchar(50) NOT NULL,
   `adresse_client` varchar(50) NOT NULL,
-  `password_client` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_client`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `password_client` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `client`
+-- Dumping data for table `client`
 --
 
 INSERT INTO `client` (`id_client`, `nom_client`, `prenom_client`, `email_client`, `telephone_client`, `adresse_client`, `password_client`) VALUES
@@ -100,25 +94,24 @@ INSERT INTO `client` (`id_client`, `nom_client`, `prenom_client`, `email_client`
 (21, 'Pierre', 'Paul', 'paul@gmail.com', '50987652', 'Port-Louis', '$2y$10$dmbkCCLBNVNmyN9SMjCU7.XbAM0JrgQo.AiI1s9lA8rvVaXL0eUbu'),
 (22, 'Jean-Pierre', 'Didier', 'DidierJP@gmail.com', '56425212', 'Flacq', '$2y$10$kcrfducoAS6ipBrJgsduqexiCYJ.qpmcPo.r3z6Eqt706vt88rKLm'),
 (23, 'Shum Yune', 'Carmen', 'carmens@gmail.com', '58232213', 'Quatre Bornes', '$2y$10$zMFN7F5e2ITOqhmlwoU3R.4jpT94gQaibQ.SR5qBcClFeu4NPJ1B2'),
-(24, 'Sookur', 'Yeshnav', 'yeshnav2434@gmail.com', '2434343', 'Port-Louis', '$2y$10$IU2zku7dvccwFcWDOXNoqOT2oW7yi2c4uQ2XiIoSYdsDHAZd8I/2q');
+(24, 'Sookur', 'Yeshnav', 'yeshnav2434@gmail.com', '2434343', 'Port-Louis', '$2y$10$IU2zku7dvccwFcWDOXNoqOT2oW7yi2c4uQ2XiIoSYdsDHAZd8I/2q'),
+(25, 'Dupont', 'Martin', 'martindupont@gmail.com', '55021340', 'Port-Louis', '$2y$10$gEEj8O6uyKnZBmm6iVaWk.oYEuJmkkd/Qf4XjkBVXtQUZ6nY/QlyK');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `contact_info`
+-- Table structure for table `contact_info`
 --
 
-DROP TABLE IF EXISTS `contact_info`;
-CREATE TABLE IF NOT EXISTS `contact_info` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `contact_info` (
+  `id` int(11) NOT NULL,
   `type` varchar(50) DEFAULT NULL,
   `icon_class` varchar(100) DEFAULT NULL,
-  `value` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `value` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `contact_info`
+-- Dumping data for table `contact_info`
 --
 
 INSERT INTO `contact_info` (`id`, `type`, `icon_class`, `value`) VALUES
@@ -130,22 +123,20 @@ INSERT INTO `contact_info` (`id`, `type`, `icon_class`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `contact_messages`
+-- Table structure for table `contact_messages`
 --
 
-DROP TABLE IF EXISTS `contact_messages`;
-CREATE TABLE IF NOT EXISTS `contact_messages` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `contact_messages` (
+  `id` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `telephone` varchar(20) DEFAULT NULL,
   `message` text NOT NULL,
-  `date_envoi` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `date_envoi` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `contact_messages`
+-- Dumping data for table `contact_messages`
 --
 
 INSERT INTO `contact_messages` (`id`, `nom`, `email`, `telephone`, `message`, `date_envoi`) VALUES
@@ -179,23 +170,19 @@ INSERT INTO `contact_messages` (`id`, `nom`, `email`, `telephone`, `message`, `d
 -- --------------------------------------------------------
 
 --
--- Structure de la table `essai`
+-- Table structure for table `essai`
 --
 
-DROP TABLE IF EXISTS `essai`;
-CREATE TABLE IF NOT EXISTS `essai` (
-  `id_essai` int NOT NULL AUTO_INCREMENT,
-  `date_essai` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+CREATE TABLE `essai` (
+  `id_essai` int(11) NOT NULL,
+  `date_essai` timestamp NOT NULL DEFAULT current_timestamp(),
   `statut` enum('en_cours','accepte','termine','refuse') NOT NULL DEFAULT 'en_cours',
   `car_name` varchar(100) NOT NULL,
-  `id_client` int NOT NULL,
-  PRIMARY KEY (`id_essai`),
-  KEY `fk_essai_client` (`id_client`),
-  KEY `fk_essai_voiture` (`car_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_client` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `essai`
+-- Dumping data for table `essai`
 --
 
 INSERT INTO `essai` (`id_essai`, `date_essai`, `statut`, `car_name`, `id_client`) VALUES
@@ -218,23 +205,21 @@ INSERT INTO `essai` (`id_essai`, `date_essai`, `statut`, `car_name`, `id_client`
 -- --------------------------------------------------------
 
 --
--- Structure de la table `home_about`
+-- Table structure for table `home_about`
 --
 
-DROP TABLE IF EXISTS `home_about`;
-CREATE TABLE IF NOT EXISTS `home_about` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `home_about` (
+  `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `subtitle` varchar(255) NOT NULL,
   `description` text NOT NULL,
-  `experience_years` int NOT NULL,
+  `experience_years` int(11) NOT NULL,
   `experience_text` varchar(255) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `home_about`
+-- Dumping data for table `home_about`
 --
 
 INSERT INTO `home_about` (`id`, `title`, `subtitle`, `description`, `experience_years`, `experience_text`, `image`) VALUES
@@ -243,20 +228,18 @@ INSERT INTO `home_about` (`id`, `title`, `subtitle`, `description`, `experience_
 -- --------------------------------------------------------
 
 --
--- Structure de la table `home_services`
+-- Table structure for table `home_services`
 --
 
-DROP TABLE IF EXISTS `home_services`;
-CREATE TABLE IF NOT EXISTS `home_services` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `home_services` (
+  `id` int(11) NOT NULL,
   `icon` varchar(255) DEFAULT NULL,
   `title` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `home_services`
+-- Dumping data for table `home_services`
 --
 
 INSERT INTO `home_services` (`id`, `icon`, `title`, `description`) VALUES
@@ -267,20 +250,18 @@ INSERT INTO `home_services` (`id`, `icon`, `title`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `home_stat`
+-- Table structure for table `home_stat`
 --
 
-DROP TABLE IF EXISTS `home_stat`;
-CREATE TABLE IF NOT EXISTS `home_stat` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `home_stat` (
+  `id` int(11) NOT NULL,
   `icon` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `value` int NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `value` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `home_stat`
+-- Dumping data for table `home_stat`
 --
 
 INSERT INTO `home_stat` (`id`, `icon`, `title`, `value`) VALUES
@@ -292,18 +273,16 @@ INSERT INTO `home_stat` (`id`, `icon`, `title`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `map_config`
+-- Table structure for table `map_config`
 --
 
-DROP TABLE IF EXISTS `map_config`;
-CREATE TABLE IF NOT EXISTS `map_config` (
-  `id` int NOT NULL,
-  `iframe_link` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `map_config` (
+  `id` int(11) NOT NULL,
+  `iframe_link` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `map_config`
+-- Dumping data for table `map_config`
 --
 
 INSERT INTO `map_config` (`id`, `iframe_link`) VALUES
@@ -312,22 +291,21 @@ INSERT INTO `map_config` (`id`, `iframe_link`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `services`
+-- Table structure for table `services`
 --
 
-DROP TABLE IF EXISTS `services`;
-CREATE TABLE IF NOT EXISTS `services` (
-  `id` int NOT NULL,
+CREATE TABLE `services` (
+  `id` int(11) NOT NULL,
   `service` varchar(255) DEFAULT NULL,
   `description` text NOT NULL,
   `icon` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `highlight` tinyint(1) DEFAULT '0',
+  `highlight` tinyint(1) DEFAULT 0,
   `title` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `services`
+-- Dumping data for table `services`
 --
 
 INSERT INTO `services` (`id`, `service`, `description`, `icon`, `image`, `highlight`, `title`) VALUES
@@ -339,12 +317,11 @@ INSERT INTO `services` (`id`, `service`, `description`, `icon`, `image`, `highli
 -- --------------------------------------------------------
 
 --
--- Structure de la table `voitures`
+-- Table structure for table `voitures`
 --
 
-DROP TABLE IF EXISTS `voitures`;
-CREATE TABLE IF NOT EXISTS `voitures` (
-  `id` int NOT NULL,
+CREATE TABLE `voitures` (
+  `id` int(11) NOT NULL,
   `car_name` varchar(255) NOT NULL,
   `car_ref` varchar(100) NOT NULL,
   `car_image` varchar(255) NOT NULL,
@@ -352,35 +329,241 @@ CREATE TABLE IF NOT EXISTS `voitures` (
   `car_transmission` varchar(50) NOT NULL,
   `fuel_type` varchar(50) NOT NULL,
   `engine_capacity` decimal(5,2) NOT NULL,
-  `year` int NOT NULL,
-  `car_km` int NOT NULL,
+  `year` int(11) NOT NULL,
+  `car_km` int(11) NOT NULL,
   `car_price` decimal(10,2) NOT NULL,
-  UNIQUE KEY `unique_car_name` (`car_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `last_modified` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `voitures`
+-- Dumping data for table `voitures`
 --
 
-INSERT INTO `voitures` (`id`, `car_name`, `car_ref`, `car_image`, `car_status`, `car_transmission`, `fuel_type`, `engine_capacity`, `year`, `car_km`, `car_price`) VALUES
-(10, 'Audi A6', 'A6-947', 'assets/list/A6.png', 'Disponible', 'Automatique', 'Essence', 1.10, 2016, 132000, 990000.00),
-(11, 'Audi A7', 'A7-767', 'assets/list/A7.png', 'Disponible', 'Automatique', 'Essence', 1.90, 2017, 45000, 1085000.00),
-(18, 'Audi Q7', 'Q7-973', 'assets/list/Q7.png', 'Disponible', 'Automatique', 'Essence', 3.10, 2018, 84000, 2680000.00),
-(19, 'Audi Q8', 'Q8-891', 'assets/list/Q8.png', 'Disponible', 'Automatique', 'Hybride', 2.90, 2021, 27173, 5500000.00),
-(20, 'Audi R8', 'R8-617', 'assets/list/R8.png', 'Disponible', 'Automatique', 'Essence', 2.10, 2022, 85452, 3500000.00),
-(21, 'Audi RS6', 'RS6-775', 'assets/list/RS6.png', 'Vendu', 'Automatique', 'Essence', 2.10, 2015, 55473, 5400000.00),
-(22, 'Mercedes AMG GT63', 'AMG-410', 'assets/list/amg-gt63.png', 'Disponible', 'Automatique', 'Essence', 3.10, 2023, 71805, 10300000.00),
-(14, 'Mercedes C-Class', 'MER-686', 'assets/list/Mercedes-Benz_C-Class_2018.png', 'Disponible', 'Automatique', 'Essence', 2.00, 2020, 79139, 3420000.00),
-(25, 'Mercedes C-Class Cabriolet', 'MER-172', 'assets/list/mercedes_cabriolet.png', 'Disponible', 'Automatique', 'Essence', 1.20, 2019, 85256, 4000000.00),
-(13, 'Mercedes G-class', 'G-C-135', 'assets/list/G-class.png', 'Disponible', 'Automatique', 'Essence', 1.90, 2019, 119683, 10250000.00),
-(7, 'Mercedes GLE 2021', '202-596', 'assets/list/2021-Mercedes-Benz-GLE-hero.png', 'Disponible', 'Automatique', 'Essence', 1.80, 2023, 113896, 3500000.00),
-(15, 'Mercedes S63 AMG ', 'MER-951', 'assets/list/Mercedes_Benz_S63_AMG_White.png', 'Disponible', 'Automatique', 'Essence', 2.00, 2021, 63497, 2120000.00),
-(9, 'Porsche 911 Carrera 4S', '911-348', 'assets/list/911_Carrera_4S.png', 'Disponible', 'Automatique', 'Essence', 3.50, 2016, 109531, 4100000.00),
-(16, 'Porsche Cayenne Turbo', 'POR-794', 'assets/list/Porsche_Cayenne_Turbo.png', 'Disponible', 'Automatique', 'Hybride', 2.70, 2020, 107065, 9200000.00),
-(8, 'Porsche Cayman 718', '718-887', 'assets/list/718_Cayman_Porsche.png', 'Disponible', 'Automatique', 'Essence', 3.80, 2019, 103769, 5600000.00),
-(27, 'Porsche GT3', 'POR-732', 'assets/list/porsche-gt3.png', 'Disponible', 'Automatique', 'Essence', 2.80, 2023, 32944, 18000000.00),
-(24, 'Porsche Macan', 'MAC-116', 'assets/list/macan.png', 'Disponible', 'Automatique', 'Essence', 3.40, 2020, 91771, 5700000.00),
-(26, 'Porsche Panamera', 'PAN-449', 'assets/list/panamera.png', 'Disponible', 'Automatique', 'Essence', 1.20, 2020, 73451, 9300000.00);
+INSERT INTO `voitures` (`id`, `car_name`, `car_ref`, `car_image`, `car_status`, `car_transmission`, `fuel_type`, `engine_capacity`, `year`, `car_km`, `car_price`, `last_modified`) VALUES
+(10, 'Audi A6', 'A6-947', 'assets/list/A6.png', 'Disponible', 'Automatique', 'Essence', 1.10, 2016, 132000, 995000.00, '2025-11-04 11:53:21'),
+(11, 'Audi A7', 'A7-767', 'assets/list/A7.png', 'Disponible', 'Automatique', 'Essence', 1.90, 2017, 45000, 1085000.00, NULL),
+(18, 'Audi Q7', 'Q7-973', 'assets/list/Q7.png', 'Disponible', 'Automatique', 'Essence', 3.10, 2018, 84000, 2680000.00, NULL),
+(19, 'Audi Q8', 'Q8-891', 'assets/list/Q8.png', 'Disponible', 'Automatique', 'Hybride', 2.90, 2021, 27173, 5500000.00, NULL),
+(20, 'Audi R8', 'R8-617', 'assets/list/R8.png', 'Disponible', 'Automatique', 'Essence', 2.10, 2022, 85452, 3500000.00, NULL),
+(21, 'Audi RS6', 'RS6-775', 'assets/list/RS6.png', 'Vendu', 'Automatique', 'Essence', 2.10, 2015, 55473, 5400000.00, NULL),
+(22, 'Mercedes AMG GT63', 'AMG-410', 'assets/list/amg-gt63.png', 'Disponible', 'Automatique', 'Essence', 3.10, 2023, 71805, 10300000.00, NULL),
+(14, 'Mercedes C-Class', 'MER-686', 'assets/list/Mercedes-Benz_C-Class_2018.png', 'Disponible', 'Automatique', 'Essence', 2.00, 2020, 79139, 3420000.00, NULL),
+(25, 'Mercedes C-Class Cabriolet', 'MER-172', 'assets/list/mercedes_cabriolet.png', 'Disponible', 'Automatique', 'Essence', 1.20, 2019, 85256, 4000000.00, NULL),
+(13, 'Mercedes G-class', 'G-C-135', 'assets/list/G-class.png', 'Disponible', 'Automatique', 'Essence', 1.90, 2019, 119683, 10250000.00, NULL),
+(7, 'Mercedes GLE 2021', '202-596', 'assets/list/2021-Mercedes-Benz-GLE-hero.png', 'Disponible', 'Automatique', 'Essence', 1.80, 2023, 113896, 3500000.00, NULL),
+(15, 'Mercedes S63 AMG ', 'MER-951', 'assets/list/Mercedes_Benz_S63_AMG_White.png', 'Disponible', 'Automatique', 'Essence', 2.00, 2021, 63497, 2120000.00, NULL),
+(9, 'Porsche 911 Carrera 4S', '911-348', 'assets/list/911_Carrera_4S.png', 'Disponible', 'Automatique', 'Essence', 3.50, 2016, 109531, 4100000.00, NULL),
+(16, 'Porsche Cayenne Turbo', 'POR-794', 'assets/list/Porsche_Cayenne_Turbo.png', 'Disponible', 'Automatique', 'Hybride', 2.70, 2020, 107065, 9200000.00, NULL),
+(8, 'Porsche Cayman 718', '718-887', 'assets/list/718_Cayman_Porsche.png', 'Disponible', 'Automatique', 'Essence', 3.80, 2019, 103769, 5600000.00, NULL),
+(27, 'Porsche GT3', 'POR-732', 'assets/list/porsche-gt3.png', 'Disponible', 'Automatique', 'Essence', 2.80, 2023, 32944, 18000000.00, NULL),
+(24, 'Porsche Macan', 'MAC-116', 'assets/list/macan.png', 'Disponible', 'Automatique', 'Essence', 3.40, 2020, 91771, 5700000.00, NULL),
+(26, 'Porsche Panamera', 'PAN-449', 'assets/list/panamera.png', 'Disponible', 'Automatique', 'Essence', 1.20, 2020, 73451, 9300000.00, NULL);
+
+--
+-- Triggers `voitures`
+--
+DELIMITER $$
+CREATE TRIGGER `before_voiture_delete` BEFORE DELETE ON `voitures` FOR EACH ROW BEGIN
+  INSERT INTO voitures_supprimees (
+    original_id,
+    car_name,
+    car_ref,
+    car_image,
+    car_status,
+    car_transmission,
+    fuel_type,
+    engine_capacity,
+    year,
+    car_km,
+    car_price,
+    deleted_at
+  ) VALUES (
+    OLD.id,
+    OLD.car_name,
+    OLD.car_ref,
+    OLD.car_image,
+    OLD.car_status,
+    OLD.car_transmission,
+    OLD.fuel_type,
+    OLD.engine_capacity,
+    OLD.year,
+    OLD.car_km,
+    OLD.car_price,
+    NOW()
+  );
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `before_voiture_update` BEFORE UPDATE ON `voitures` FOR EACH ROW BEGIN
+    SET NEW.last_modified = NOW();
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `voitures_supprimees`
+--
+
+CREATE TABLE `voitures_supprimees` (
+  `id` int(11) NOT NULL,
+  `original_id` int(11) DEFAULT NULL,
+  `car_name` varchar(255) DEFAULT NULL,
+  `car_ref` varchar(100) DEFAULT NULL,
+  `car_image` varchar(255) DEFAULT NULL,
+  `car_status` varchar(50) DEFAULT NULL,
+  `car_transmission` varchar(50) DEFAULT NULL,
+  `fuel_type` varchar(50) DEFAULT NULL,
+  `engine_capacity` decimal(5,2) DEFAULT NULL,
+  `year` int(11) DEFAULT NULL,
+  `car_km` int(11) DEFAULT NULL,
+  `car_price` decimal(10,2) DEFAULT NULL,
+  `deleted_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id_admin`);
+
+--
+-- Indexes for table `carousel`
+--
+ALTER TABLE `carousel`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `client`
+--
+ALTER TABLE `client`
+  ADD PRIMARY KEY (`id_client`);
+
+--
+-- Indexes for table `contact_info`
+--
+ALTER TABLE `contact_info`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contact_messages`
+--
+ALTER TABLE `contact_messages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `essai`
+--
+ALTER TABLE `essai`
+  ADD PRIMARY KEY (`id_essai`),
+  ADD KEY `fk_essai_client` (`id_client`),
+  ADD KEY `fk_essai_voiture` (`car_name`);
+
+--
+-- Indexes for table `home_about`
+--
+ALTER TABLE `home_about`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `home_services`
+--
+ALTER TABLE `home_services`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `home_stat`
+--
+ALTER TABLE `home_stat`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `map_config`
+--
+ALTER TABLE `map_config`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `voitures`
+--
+ALTER TABLE `voitures`
+  ADD UNIQUE KEY `unique_car_name` (`car_name`);
+
+--
+-- Indexes for table `voitures_supprimees`
+--
+ALTER TABLE `voitures_supprimees`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `carousel`
+--
+ALTER TABLE `carousel`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `client`
+--
+ALTER TABLE `client`
+  MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `contact_info`
+--
+ALTER TABLE `contact_info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `contact_messages`
+--
+ALTER TABLE `contact_messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT for table `essai`
+--
+ALTER TABLE `essai`
+  MODIFY `id_essai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+
+--
+-- AUTO_INCREMENT for table `home_about`
+--
+ALTER TABLE `home_about`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `home_services`
+--
+ALTER TABLE `home_services`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `home_stat`
+--
+ALTER TABLE `home_stat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `voitures_supprimees`
+--
+ALTER TABLE `voitures_supprimees`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
