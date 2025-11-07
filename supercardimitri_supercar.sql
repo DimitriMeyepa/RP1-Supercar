@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql-supercardimitri.alwaysdata.net
--- Generation Time: Nov 04, 2025 at 11:56 AM
+-- Generation Time: Nov 07, 2025 at 05:44 AM
 -- Server version: 10.11.14-MariaDB
 -- PHP Version: 7.4.33
 
@@ -20,6 +20,23 @@ SET time_zone = "+00:00";
 --
 -- Database: `supercardimitri_supercar`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`434571`@`%` PROCEDURE `ListerEssaisClient` (IN `clientID` INT)   BEGIN
+    SELECT 
+        id_essai,
+        date_essai,
+        statut,
+        car_name
+    FROM essai
+    WHERE id_client = clientID
+    ORDER BY date_essai DESC;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -424,6 +441,13 @@ CREATE TABLE `voitures_supprimees` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `voitures_supprimees`
+--
+
+INSERT INTO `voitures_supprimees` (`id`, `original_id`, `car_name`, `car_ref`, `car_image`, `car_status`, `car_transmission`, `fuel_type`, `engine_capacity`, `year`, `car_km`, `car_price`, `deleted_at`) VALUES
+(1, 0, 'BMW M4', 'CAR-20251104-9E4CE', 'assets/list/vercel.png', 'Disponible', 'Manuelle', 'Diesel', 32.00, 2000, 323232, 32323.00, '2025-11-04 12:07:04');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -563,7 +587,7 @@ ALTER TABLE `home_stat`
 -- AUTO_INCREMENT for table `voitures_supprimees`
 --
 ALTER TABLE `voitures_supprimees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
