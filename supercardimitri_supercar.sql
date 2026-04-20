@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.2
+-- version 5.2.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql-supercardimitri.alwaysdata.net
--- Generation Time: Nov 07, 2025 at 05:44 AM
--- Server version: 10.11.14-MariaDB
--- PHP Version: 7.4.33
+-- Generation Time: Apr 20, 2026 at 09:30 AM
+-- Server version: 10.11.15-MariaDB
+-- PHP Version: 8.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -57,7 +57,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `nom_admin`, `prenom_admin`, `email_admin`, `password_admin`) VALUES
-(2, 'Patrice', 'Patrick', 'admin-supercar@gmail.com', 'supercar12');
+(2, 'admin', 'supercar', 'admin-supercar@gmail.com', '$2y$10$32Z8UmjuMRvR7KIe9zpGZeRh66R.GDuDBIUUtWIYmcr3vfCUkdAie'),
+(3, 'Admin', 'Admin', 'admin@gmail.com', '$2y$10$HzWmbyI46qW6/Q7KvSemjOrKl1KfsKGNTqWTfOxIr1eMQmzSHOCV.');
 
 -- --------------------------------------------------------
 
@@ -214,10 +215,13 @@ INSERT INTO `essai` (`id_essai`, `date_essai`, `statut`, `car_name`, `id_client`
 (52, '2025-04-25 14:30:00', 'en_cours', 'Mercedes AMG GT63', 20),
 (53, '2025-04-30 12:00:00', 'en_cours', 'Porsche Macan', 21),
 (54, '2025-05-21 10:30:00', 'en_cours', 'Porsche Macan', 12),
-(55, '2025-05-29 08:00:00', 'en_cours', 'Audi A6', 12),
-(56, '2025-05-31 10:30:00', 'refuse', 'Audi A7', 12),
+(55, '2025-05-29 08:00:00', 'accepte', 'Audi A6', 12),
+(56, '2025-05-31 10:30:00', 'accepte', 'Audi A7', 12),
 (57, '2025-07-31 08:30:00', 'termine', 'Mercedes G-class', 23),
-(58, '2025-10-30 08:00:00', 'accepte', 'Audi A6', 12);
+(58, '2025-10-30 08:00:00', 'termine', 'Audi A6', 12),
+(59, '2025-12-05 11:00:00', 'termine', 'Mercedes AMG GT63', 12),
+(60, '2025-11-27 11:00:00', 'termine', 'Mercedes AMG GT63', 12),
+(61, '2025-11-27 11:00:00', 'accepte', 'Mercedes GLE 2021', 12);
 
 -- --------------------------------------------------------
 
@@ -533,7 +537,7 @@ ALTER TABLE `voitures_supprimees`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `carousel`
@@ -563,7 +567,7 @@ ALTER TABLE `contact_messages`
 -- AUTO_INCREMENT for table `essai`
 --
 ALTER TABLE `essai`
-  MODIFY `id_essai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id_essai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `home_about`
